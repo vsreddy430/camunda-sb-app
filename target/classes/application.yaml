@@ -1,0 +1,27 @@
+camunda.bpm.admin-user:
+  id: admin
+  password: admin
+
+#spring.datasource.url: jdbc:h2:mem:camunda-h2-database;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#spring.h2.console:
+#enabled: true
+#path: /h2-console
+jpa:
+  database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+datasource:
+  type: com.zaxxer.hikari.HikariDataSource
+  url: jdbc:postgresql://localhost:5432/camunda
+  username: camunda
+  password: admin
+hikari:
+  jdbc-url: jdbc:postgresql://localhost:5432/camunda
+  username: camunda
+  password: admin
+  driver-class-name: org.postgresql.Driver
+  pool-name: HikariCP
+  idle-timeout: 3000
+  minimum-idle: 10
+  maximum-pool-size: 20
+  connection-timeout: 2000
+  connection-test-query: select 1
+  transaction-isolation: TRANSACTION_READ_COMMITTED
