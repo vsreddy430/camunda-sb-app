@@ -23,7 +23,7 @@ jobs:
          paths:
            - target/
       - store_artifacts:
-                path: /bin/final_build
+                path: target/
 workflows:
   version: 2.1
 
