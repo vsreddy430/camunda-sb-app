@@ -14,6 +14,8 @@ jobs:
           name: maven build
           command: |
             mvn clean install
+            mkdir -p /tmp/artifacts
+            cp target/* /tmp/artifacts 
       - save_cache:
           paths:
             - ~/.m2
@@ -21,11 +23,8 @@ jobs:
       - persist_to_workspace:
          root: ./
          paths:
-           - target/            
+           - target/        
       - store_artifacts:
-          command: |
-            mkdir -p /tmp/artifacts
-            cp target/* /tmp/artifacts
           path: /tmp/artifacts
 workflows:
   version: 2.1
