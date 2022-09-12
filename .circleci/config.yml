@@ -21,8 +21,11 @@ jobs:
       - persist_to_workspace:
          root: ./
          paths:
-           - target/
+           - target/            
       - store_artifacts:
+          command: |
+            mkdir -p /tmp/artifacts
+            cp target/* /tmp/artifacts
           path: /tmp/artifacts
 workflows:
   version: 2.1
