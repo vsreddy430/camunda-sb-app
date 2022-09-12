@@ -6,7 +6,15 @@ jobs:
       - image: cimg/openjdk:17.0.1
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            - v1-dependencies-
       - run: mvn clean install
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
       - persist_to_workspace:
          root: ./
          paths:
