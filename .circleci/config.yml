@@ -22,8 +22,13 @@ jobs:
          root: ./
          paths:
            - target/
+     - run:
+          command: |
+            mkdir -p /tmp/artifacts
+            cp target/* /tmp/artifacts
+          when: on_fail
       - store_artifacts:
-                path: target/
+          path: /tmp/artifacts
 workflows:
   version: 2.1
 
